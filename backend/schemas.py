@@ -42,7 +42,7 @@ class LocationCreate(BaseModel):
     y: float = Field(default=0.0, ge=-1.0, le=1.0)
     symbol: Optional[str] = None
     description: Optional[str] = None
-    color: str = Field(default="#3b82f6", regex="^#[0-9A-Fa-f]{6}$")
+    color: str = Field(default="#3b82f6", pattern="^#[0-9A-Fa-f]{6}$")
 
 
 class LocationUpdate(BaseModel):
@@ -54,7 +54,7 @@ class LocationUpdate(BaseModel):
     y: Optional[float] = Field(None, ge=-1.0, le=1.0)
     symbol: Optional[str] = None
     description: Optional[str] = None
-    color: Optional[str] = Field(None, regex="^#[0-9A-Fa-f]{6}$")
+    color: Optional[str] = Field(None, pattern="^#[0-9A-Fa-f]{6}$")
 
 
 class LocationResponse(BaseModel):
@@ -177,4 +177,5 @@ class WorldStats(BaseModel):
     total_entities: int
     total_transits: int
     most_frequent_location: Optional[LocationResponse]
+
     latest_dream: Optional[DreamResponse]
